@@ -29,7 +29,7 @@ namespace Collections
             Deal(dealer, playerOne, playerTwo);
             Console.WriteLine($"Player One has {playerOne.CountCards(playerOne)} cards");
             Console.WriteLine();
-            Console.WriteLine($"Player Two {playerTwo.CountCards(playerTwo)} cards");
+            Console.WriteLine($"Player Two has {playerTwo.CountCards(playerTwo)} cards");
             Console.WriteLine();
             Console.WriteLine($"Dealer has {dealer.CountCards(dealer)} cards");
 
