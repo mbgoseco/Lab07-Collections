@@ -7,7 +7,7 @@ namespace Collections.Classes
 {
     public class Deck<T> : IEnumerable<T>
     {
-        T[] cards = new T[52];
+        T[] cards = new T[1];
         int currentIndex = 0;
 
         public void AddCard(T card)
@@ -22,13 +22,14 @@ namespace Collections.Classes
 
         public void RemoveCard(T card)
         {
+            Array.Reverse(cards);
             Array.Resize(ref cards, cards.Length - 1);
+            Array.Reverse(cards);
             currentIndex--;
         }
 
-        public void CountCards(Deck<Card> deck)
+        public int CountCards(Deck<Card> deck)
         {
-            Console.WriteLine($"This deck has {deck.currentIndex} cards:");
             foreach (Card card in deck)
             {
                 switch (Enum.GetName(typeof(Suit), card.Suit))
@@ -47,6 +48,7 @@ namespace Collections.Classes
                         break;
                 }
             }
+            return deck.currentIndex;
         }
 
 
