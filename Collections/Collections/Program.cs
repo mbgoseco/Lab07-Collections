@@ -23,8 +23,12 @@ namespace Collections
                     dealer.AddCard(card);
                 }
             }
+            Card another = new Card(Suit.Hearts, Value.Ten);
+                    dealer.AddCard(another);
 
             Console.WriteLine($"Dealer has {dealer.CountCards(dealer)} cards");
+            Console.WriteLine();
+            Console.WriteLine("Dealing Cards...");
             Console.WriteLine();
             Deal(dealer, playerOne, playerTwo);
             Console.WriteLine($"Player One has {playerOne.CountCards(playerOne)} cards");
@@ -32,30 +36,32 @@ namespace Collections
             Console.WriteLine($"Player Two has {playerTwo.CountCards(playerTwo)} cards");
             Console.WriteLine();
             Console.WriteLine($"Dealer has {dealer.CountCards(dealer)} cards");
+            Console.WriteLine();
 
 
         }
 
         public static void Deal(Deck<Card> dealer, Deck<Card> p1, Deck<Card> p2)
         {
-            //for (int i = 0; i < dealer.CountCards(dealer); i++)
-            //{
-            //    p1.AddCard(card);
-            //}
-
             int counter = 2;
             
-            foreach (Card card in dealer)
+            for (int i = dealer.currentIndex - 1; i >= 0; i--)
             {
                 if (counter % 2 == 0)
                 {
-                    p1.AddCard(card);
+                    p1.AddCard(dealer.cards[i]);
+                    dealer.RemoveCard(dealer.cards[i]);
                     counter++;
                 }
                 else
                 {
-                    p2.AddCard(card);
+                    p2.AddCard(dealer.cards[i]);
+                    dealer.RemoveCard(dealer.cards[i]);
                     counter++;
+                }
+                if (i == 1 && p1.currentIndex == p2.currentIndex)
+                {
+                    return;
                 }
             }
         }
