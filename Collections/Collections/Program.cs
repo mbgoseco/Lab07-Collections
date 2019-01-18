@@ -45,7 +45,7 @@ namespace Collections
                 Console.WriteLine($"Player One has {playerOne.CountCards(playerOne)} cards");
                 Console.WriteLine();
                 Console.WriteLine($"Removing [{playerTwo.cards[playerTwo.currentIndex - 13].Value} ♣] from Player Two...");
-                playerTwo.RemoveCard(new Card(Suit.Spades, Value.Ace));
+                playerTwo.RemoveCard(playerTwo.cards[playerTwo.currentIndex - 13]);
                 Console.WriteLine($"Player Two has {playerTwo.CountCards(playerTwo)} cards");
             }
             catch (Exception e)
