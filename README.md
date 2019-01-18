@@ -7,4 +7,4 @@ This app demonstrates the use of enums and collections to create a deck of playi
 When run, the app will activate a console that displays the deck built for the dealer. Then it will show how many cards were given to each player from the dealer, then show the dealer's remaining cards (if any). The console will also display individual cards being added and removed from each deck. No user input is required.
 
 ## Screenshots
-![screenshot](https://github.com/mbgoseco/Lab07-Collections/blob/master/assets/screenshot.PNG)
+![screenshot](https://github.com/mbgoseco/Lab07-Collections/blob/master/assets/screenshot_01.PNG)
