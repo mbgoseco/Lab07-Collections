@@ -37,6 +37,14 @@ namespace Collections
             Console.WriteLine();
             Console.WriteLine($"Dealer has {dealer.CountCards(dealer)} cards");
             Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine($"Removing [{playerOne.cards[playerOne.currentIndex - 1].Value} ♠] from Player One...");
+            playerOne.RemoveCard(playerOne.cards[playerOne.currentIndex - 1]);
+            Console.WriteLine($"Player One has {playerOne.CountCards(playerOne)} cards");
+            Console.WriteLine();
+            Console.WriteLine($"Removing [{playerTwo.cards[playerTwo.currentIndex - 13].Value} ♣] from Player Two...");
+            playerTwo.RemoveCard(playerTwo.cards[playerTwo.currentIndex - 13]);
+            Console.WriteLine($"Player Two has {playerTwo.CountCards(playerTwo)} cards");
 
 
         }
