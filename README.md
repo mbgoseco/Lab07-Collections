@@ -5,6 +5,7 @@ This app demonstrates the use of enums and collections to create a deck of playi
 
 ## Directions
 When run, the app will activate a console that displays the deck built for the dealer. Then it will show how many cards were given to each player from the dealer, then show the dealer's remaining cards (if any). The console will also display individual cards being added and removed from each deck. No user input is required.
+- Note: The default font for Windows Command Line does not display card suit symbols. Change it to Raster Fonts in Properties -> Font.
 
 ## Screenshots
 ![screenshot](https://github.com/mbgoseco/Lab07-Collections/blob/master/assets/screenshot_01.PNG)
