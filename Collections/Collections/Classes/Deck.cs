@@ -7,14 +7,14 @@ namespace Collections.Classes
 {
     public class Deck<T> : IEnumerable<T>
     {
-        T[] cards = new T[1];
-        int currentIndex = 0;
+        public T[] cards = new T[52];
+        public int currentIndex = 0;
 
         public void AddCard(T card)
         {
-            if (currentIndex < cards.Length)
+            if (currentIndex >= cards.Length)
             {
-                Array.Resize(ref cards, cards.Length + 1);
+                Array.Resize(ref cards, cards.Length + 52);
             }
             cards[currentIndex] = card;
             currentIndex++;
@@ -22,10 +22,25 @@ namespace Collections.Classes
 
         public void RemoveCard(T card)
         {
-            Array.Reverse(cards);
-            Array.Resize(ref cards, cards.Length - 1);
-            Array.Reverse(cards);
-            currentIndex--;
+
+            T[] newArr = new T[cards.Length - 1];
+            int counter = 0;
+
+            foreach (T item in cards)
+            {
+                if (item != null)
+                {
+                    if (!card.Equals(item))
+                    {
+                        newArr[counter] = item;
+                        counter++;
+                    } else
+                    {
+                        currentIndex--;
+                    }
+                }
+            }
+            cards = newArr;
         }
 
         public int CountCards(Deck<Card> deck)
@@ -48,6 +63,7 @@ namespace Collections.Classes
                         break;
                 }
             }
+            Console.WriteLine();
             return deck.currentIndex;
         }
 
