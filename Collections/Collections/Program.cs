@@ -9,43 +9,49 @@ namespace Collections
     {
         static void Main(string[] args)
         {
-            Deck<Card> dealer = new Deck<Card>();
-            Deck<Card> playerOne = new Deck<Card>();
-            Deck<Card> playerTwo = new Deck<Card>();
-
-            for (int i = 0; i < Enum.GetValues(typeof(Suit)).Length; i++)
+            try
             {
-                for (int j = 0; j < Enum.GetValues(typeof(Value)).Length; j++)
+                Deck<Card> dealer = new Deck<Card>();
+                Deck<Card> playerOne = new Deck<Card>();
+                Deck<Card> playerTwo = new Deck<Card>();
+
+                for (int i = 0; i < Enum.GetValues(typeof(Suit)).Length; i++)
                 {
-                    Suit suit = (Suit)Enum.Parse(typeof(Suit), Enum.GetName(typeof(Suit), i));
-                    Value value = (Value)Enum.Parse(typeof(Value), Enum.GetName(typeof(Value), j));
-                    Card card = new Card(suit, value);
-                    dealer.AddCard(card);
+                    for (int j = 0; j < Enum.GetValues(typeof(Value)).Length; j++)
+                    {
+                        Suit suit = (Suit)Enum.Parse(typeof(Suit), Enum.GetName(typeof(Suit), i));
+                        Value value = (Value)Enum.Parse(typeof(Value), Enum.GetName(typeof(Value), j));
+                        Card card = new Card(suit, value);
+                        dealer.AddCard(card);
+                    }
                 }
+                Card another = new Card(Suit.Hearts, Value.Ten);
+                dealer.AddCard(another);
+
+                Console.WriteLine($"Dealer has {dealer.CountCards(dealer)} cards");
+                Console.WriteLine();
+                Console.WriteLine("Dealing Cards...");
+                Console.WriteLine();
+                Deal(dealer, playerOne, playerTwo);
+                Console.WriteLine($"Player One has {playerOne.CountCards(playerOne)} cards");
+                Console.WriteLine();
+                Console.WriteLine($"Player Two has {playerTwo.CountCards(playerTwo)} cards");
+                Console.WriteLine();
+                Console.WriteLine($"Dealer has {dealer.CountCards(dealer)} cards");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine($"Removing [{playerOne.cards[playerOne.currentIndex - 1].Value} ♠] from Player One...");
+                playerOne.RemoveCard(playerOne.cards[playerOne.currentIndex - 1]);
+                Console.WriteLine($"Player One has {playerOne.CountCards(playerOne)} cards");
+                Console.WriteLine();
+                Console.WriteLine($"Removing [{playerTwo.cards[playerTwo.currentIndex - 13].Value} ♣] from Player Two...");
+                playerTwo.RemoveCard(new Card(Suit.Spades, Value.Ace));
+                Console.WriteLine($"Player Two has {playerTwo.CountCards(playerTwo)} cards");
             }
-            Card another = new Card(Suit.Hearts, Value.Ten);
-                    dealer.AddCard(another);
-
-            Console.WriteLine($"Dealer has {dealer.CountCards(dealer)} cards");
-            Console.WriteLine();
-            Console.WriteLine("Dealing Cards...");
-            Console.WriteLine();
-            Deal(dealer, playerOne, playerTwo);
-            Console.WriteLine($"Player One has {playerOne.CountCards(playerOne)} cards");
-            Console.WriteLine();
-            Console.WriteLine($"Player Two has {playerTwo.CountCards(playerTwo)} cards");
-            Console.WriteLine();
-            Console.WriteLine($"Dealer has {dealer.CountCards(dealer)} cards");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine($"Removing [{playerOne.cards[playerOne.currentIndex - 1].Value} ♠] from Player One...");
-            playerOne.RemoveCard(playerOne.cards[playerOne.currentIndex - 1]);
-            Console.WriteLine($"Player One has {playerOne.CountCards(playerOne)} cards");
-            Console.WriteLine();
-            Console.WriteLine($"Removing [{playerTwo.cards[playerTwo.currentIndex - 13].Value} ♣] from Player Two...");
-            playerTwo.RemoveCard(playerTwo.cards[playerTwo.currentIndex - 13]);
-            Console.WriteLine($"Player Two has {playerTwo.CountCards(playerTwo)} cards");
-
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
         }
 

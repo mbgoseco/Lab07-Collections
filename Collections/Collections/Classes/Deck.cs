@@ -22,7 +22,7 @@ namespace Collections.Classes
 
         public void RemoveCard(T card)
         {
-
+            bool cardExists = false;
             T[] newArr = new T[cards.Length - 1];
             int counter = 0;
 
@@ -37,9 +37,15 @@ namespace Collections.Classes
                     } else
                     {
                         currentIndex--;
+                        cardExists = true;
                     }
                 }
             }
+            if (!cardExists)
+            {
+                throw new Exception("Cannot remove card that is not in player's deck.");
+            }
+
             cards = newArr;
         }
 
