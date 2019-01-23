@@ -10,6 +10,10 @@ namespace Collections.Classes
         public T[] cards = new T[52];
         public int currentIndex = 0;
 
+        /// <summary>
+        /// Adds a created Card object to a given deck. Increases the array size of cards in a deck if its size is exceeded.
+        /// </summary>
+        /// <param name="card">New Card object</param>
         public void AddCard(T card)
         {
             if (currentIndex >= cards.Length)
@@ -20,6 +24,10 @@ namespace Collections.Classes
             currentIndex++;
         }
 
+        /// <summary>
+        /// Removes a specific card from a deck matching the suit and value if it exists in the deck.
+        /// </summary>
+        /// <param name="card">Target card to remove</param>
         public void RemoveCard(T card)
         {
             bool cardExists = false;
@@ -49,6 +57,11 @@ namespace Collections.Classes
             cards = newArr;
         }
 
+        /// <summary>
+        /// Loops through an entre deck list, displays each card to the console, and returns the total number of cards
+        /// </summary>
+        /// <param name="deck">Deck of Card objects</param>
+        /// <returns>Total number of cards</returns>
         public int CountCards(Deck<Card> deck)
         {
             foreach (Card card in deck)

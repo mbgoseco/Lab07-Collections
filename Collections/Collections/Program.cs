@@ -55,6 +55,12 @@ namespace Collections
 
         }
 
+        /// <summary>
+        /// Evenly splits the dealer's deck between players one and two, keeping any odd remainder
+        /// </summary>
+        /// <param name="dealer">Dealer's deck</param>
+        /// <param name="p1">Player One's deck</param>
+        /// <param name="p2">Player Two's deck</param>
         public static void Deal(Deck<Card> dealer, Deck<Card> p1, Deck<Card> p2)
         {
             int counter = 2;
